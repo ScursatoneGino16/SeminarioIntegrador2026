@@ -22,109 +22,148 @@ La información relacionada con la biblioteca y la actividad de juego de los usu
 
 Para simplificar el problema y acotar el alcance del proyecto, no se tendrán en cuenta:
 
-- La integración con plataformas de distribución de videojuegos distintas de 
-- Steam.
-    
-- La compra, venta, descarga o instalación de videojuegos.
-    
-- La gestión de información propia del funcionamiento interno de los videojuegos.
-    
-- La administración de galerías de imágenes o capturas de pantalla de los videojuegos.
+- El registro de usuarios mediante credenciales propias de la aplicación, ya que la autenticación se realizará exclusivamente mediante cuentas de Steam
 	
-- Los sistemas de amigos, seguidores o contactos entre usuarios.
-    
-- La mensajería privada y el chat entre usuarios.
-    
-- Las notificaciones sociales.
-    
-- La publicación de contenido diferente de las reseñas de videojuegos.
-    
-- Los sistemas de recomendación personalizados.
-    
-- La gestión de comunidades o foros.
-    
-- La modificación de la información descriptiva de los videojuegos por parte de los usuarios.
-    
-- La modificación manual de categorías y etiquetas por parte de los usuarios.
+- La integración con plataformas de distribución de videojuegos diferentes de Steam
+	
+- La compra, venta, descarga o instalación de videojuegos
+	
+- La gestión de pagos relacionados con la compra de videojuegos o cualquier otro servicio
+	
+- La gestión de información relacionada con el funcionamiento interno de los videojuegos
+	
+- La gestión o registro de componentes de hardware de los usuarios
+	
+- La administración de galerías de imágenes, capturas de pantalla o contenido audiovisual propio
+	
+- La reproducción o almacenamiento de videos dentro de la aplicación
+	
+- La gestión de amigos, seguidores o contactos entre usuarios
+	
+- La mensajería privada y el chat entre usuarios
+	
+- La implementación de notificaciones de carácter social
+	
+- La publicación de contenido diferente de las reseñas de videojuegos
+	
+- La edición o modificación de reseñas pertenecientes a otros usuarios
+	
+- La modificación por parte de los usuarios de la información descriptiva de los videojuegos
+	
+- La modificación manual de categorías y etiquetas por parte de los usuarios
+	
+- La implementación de sistemas de recomendación personalizados
+	
+- La gestión de comunidades, foros o espacios de discusión
 
 # Objetivo del Producto
 
 Gestionar la consulta y publicación de reseñas de videojuegos pertenecientes a Steam, permitiendo a los usuarios autenticarse mediante su cuenta de Steam, consultar información sobre videojuegos, conocer las opiniones de otros usuarios y registrar sus propias valoraciones junto con información sobre su experiencia de juego.
 
-# Alcances
+# Alcances Generales
 
-- **Administrar Videojuegos**
+- Administrar Videojuego
 	
-- **Gestionar Usuarios**
-    
-- **Gestionar Biblioteca**
-    
-- **Gestionar Reseñas**
-    
-- **Gestionar Catálogo**
-    
-- **Gestionar Reseñas**
-    
-- **Gestionar Perfiles**
+- Administrar Reseñas
+	
+- Administrar Usuario
+	
+- Administrar Categoria
+	
+- Administrar Etiqueta
+	
+- Gestionar autenticación de usuarios mediante Steam
+	
+- Gestionar consulta de videojuegos
+	
+- Gestionar búsqueda y filtrado de videojuegos
+	
+- Gestionar biblioteca y actividad de juego
+	
+- Gestionar reseñas de videojuegos
+	
+- Gestionar consulta de perfiles e historial de reseñas
+	
+- Gestionar integración con Steam
 
-## No contempla
+# Alcances Detallados
 
-- Registro de usuarios mediante usuario y contraseña propios de la aplicación.
-    
-- Integración con plataformas diferentes de Steam.
-    
-- Compra o venta de videojuegos.
-    
-- Gestión de pagos.
-    
-- Descarga o instalación de videojuegos.
-    
-- Gestión de amigos o seguidores.
-    
-- Mensajería privada o chat.
-    
-- Sistema de notificaciones sociales.
-    
-- Publicación de contenido diferente de las reseñas.
-    
-- Edición de reseñas pertenecientes a otros usuarios.
-    
-- Modificación por parte de los usuarios de la información descriptiva de los videojuegos.
-    
-- Administración de galerías de imágenes o capturas de pantalla.
-    
-- Reproducción o almacenamiento de videos dentro de la aplicación.
-    
-- Gestión de contenido audiovisual propio.
-    
-- Sistemas de recomendación personalizados.
-    
-- Gestión de comunidades o foros.
-    
-- Registro de componentes de hardware
+* **Administrar Videojuego**
+	- Consultar [AppID, NombreVideojuego, Descripción]
+* **Administrar Reseñas**
+	* Registrar [Usuario, Videojuego, Valoración, Comentario, Fecha, Horas de juego]
+	- Modificar [Valoración, Comentario]
+	- Eliminar [*]
+	- Consultar [Usuario, Videojuego, Valoración, Comentario, Fecha, Horas de juego]
+* **Administrar Usuario**
+	* Consultar [SteamID, NombreUsuario]
+* **Administrar Categoria**
+	* Consultar [NombreCategoria]
+* **Administrar Etiqueta**
+	* Consultar [NombreEtiqueta]
+* **Gestionar autenticación de usuarios mediante Steam**
+	* Iniciar sesión mediante una cuenta de Steam
+	- Verificar identidad del usuario
+	- Identificar usuario mediante Steam
+	- Permitir acceso a la plataforma
+* **Gestionar consulta de videojuegos**
+	* Buscar videojuegos por nombre
+	- Consultar información del videojuego
+	- Consultar información mediante AppID
+	- Visualizar nombre
+	- Visualizar descripción
+	- Visualizar categorías
+	- Visualizar etiquetas
+* **Gestionar búsqueda y filtrado de videojuegos**
+	* Ingresar nombre del videojuego
+	- Seleccionar categoría
+	- Seleccionar etiqueta
+	- Aplicar criterios de búsqueda
+	- Visualizar videojuegos que coincidan con los criterios seleccionados
+* **Gestionar biblioteca y actividad de juego**
+	* Consultar biblioteca de Steam
+	- Consultar videojuegos pertenecientes a la biblioteca
+	- Consultar horas de juego
+	- Obtener información de actividad de juego desde Steam
+	- Relacionar información mediante AppID
+* **Gestionar reseñas de videojuegos**
+	* Seleccionar videojuego
+	- Ingresar valoración
+	- Ingresar comentario
+	- Registrar horas de juego
+	- Registrar fecha de publicación
+	- Publicar reseña
+	- Consultar reseñas de un videojuego
+	- Modificar reseña propia
+	- Eliminar reseña propia
+* **Gestionar consulta de perfiles e historial de reseñas**
+	* Consultar perfil de usuario
+	- Consultar historial de reseñas
+	- Consultar reseñas publicadas por un usuario
+	- Visualizar información de las reseñas
+* **Gestionar integración con Steam**
+	* Obtener información de la biblioteca del usuario
+	- Obtener información sobre las horas de juego
+	- Relacionar información de Steam con los videojuegos mediante AppID
 
 # Reglas de Negocio
 
-|Nº|Nombre|Regla de Negocio – Descripción|
-|--:|---|---|
-|1|Identificación del Usuario|Para acceder a las funcionalidades de la plataforma, el usuario debe autenticarse mediante una cuenta válida de Steam.|
-|2|Identificación del Videojuego|Cada videojuego se identifica mediante un AppID único correspondiente al identificador utilizado por Steam.|
-|3|Biblioteca del Usuario|La biblioteca de videojuegos y las horas de juego del usuario son obtenidas a partir de la información disponible en Steam.|
-|4|Publicación de Reseñas|Una reseña debe estar asociada a un único usuario y a un único videojuego.|
-|5|Valoración de la Reseña|Toda reseña debe contener una valoración comprendida entre una y cinco estrellas.|
-|6|Experiencia de Juego|Al momento de publicar una reseña se debe registrar la cantidad de horas de juego que posee el usuario sobre el videojuego reseñado.|
-|7|Reseña por Videojuego|Un usuario puede poseer como máximo una reseña activa por videojuego. Dicha reseña puede ser modificada posteriormente por su autor.|
-|8|Modificación de Reseñas|Un usuario únicamente puede modificar las reseñas que le pertenecen.|
-|9|Eliminación de Reseñas|Un usuario únicamente puede eliminar las reseñas que le pertenecen.|
-|10|Consulta de Reseñas|Las reseñas publicadas pueden ser consultadas por los usuarios desde la información correspondiente al videojuego.|
-|11|Perfil de Usuario|Los perfiles de otros usuarios pueden ser consultados únicamente en modo de lectura, sin posibilidad de modificar sus datos o reseñas.|
-|12|Catálogo de Videojuegos|Los videojuegos disponibles para consulta pertenecen al catálogo administrado por la plataforma y se identifican mediante su AppID.|
-|13|Categorías y Etiquetas|Un videojuego puede estar asociado a múltiples categorías y etiquetas, y una misma categoría o etiqueta puede estar asociada a múltiples videojuegos.|
-|14|Información del Catálogo|La información descriptiva, categorías y etiquetas de los videojuegos se obtiene de la fuente de datos utilizada para alimentar el catálogo y no puede ser modificada por los usuarios.|
-|15|Portada del Videojuego|Cada videojuego posee una referencia a su portada, utilizada como representación visual dentro de la aplicación. No se contempla la gestión de galerías de imágenes.|
-|16|Contenido Audiovisual|El sistema no almacena ni administra contenido audiovisual de los videojuegos. Cuando corresponda, el usuario podrá acceder a contenido externo mediante plataformas como YouTube.|
-|17|Información de Steam|La información obtenida desde Steam sobre la actividad del usuario no puede ser modificada directamente desde la aplicación.|
-|18|Contexto de la Reseña|La cantidad de horas de juego registrada en una reseña corresponde a las horas que poseía el usuario en el momento de su publicación y no debe actualizarse automáticamente con el paso del tiempo.|
+| N.º de RN | Regla de Negocio                             | Descripción                                                                                                                                                                      |
+| --------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **RN01**  | **Identificación mediante Steam**            | Para poder acceder a la plataforma, el usuario deberá poseer una cuenta válida de Steam y deberá identificarse mediante ella                                                     |
+| **RN02**  | **Identificación y relación de videojuegos** | Para poder gestionar y relacionar la información de los videojuegos con la información proveniente de Steam, se deberá utilizar el AppID único correspondiente a cada videojuego |
+| **RN03**  | **Valoración de las reseñas**                | Para poder publicar una reseña, el usuario deberá ingresar una valoración comprendida entre una y cinco estrellas                                                                |
+| **RN04**  | **Asociación de las reseñas**                | Cada reseña deberá estar asociada a un único usuario y a un único videojuego                                                                                                     |
+| **RN05**  | **Información obligatoria de las reseñas**   | Para poder publicar una reseña, el usuario deberá ingresar un comentario y el sistema deberá registrar la fecha en que fue realizada                                             |
+| **RN06**  | **Registro de horas de juego**               | Para poder publicar una reseña, el sistema deberá registrar la cantidad de horas de juego que posea el usuario sobre el videojuego reseñado                                      |
+| **RN07**  | **Reseña única por videojuego**              | Para poder publicar una reseña sobre un videojuego, el usuario no deberá poseer otra reseña activa asociada al mismo videojuego                                                  |
+| **RN08**  | **Administración de reseñas propias**        | Para poder modificar o eliminar una reseña, el usuario deberá ser propietario de la misma                                                                                        |
+| **RN09**  | **Consulta de perfiles de usuarios**         | Los perfiles y el historial de reseñas de otros usuarios deberán poder consultarse únicamente con fines informativos, sin permitir la modificación de sus datos o reseñas        |
+| **RN10**  | **Relación entre videojuegos y categorías**  | Un videojuego podrá estar asociado a múltiples categorías y una misma categoría podrá estar asociada a múltiples videojuegos                                                     |
+| **RN11**  | **Relación entre videojuegos y etiquetas**   | Un videojuego podrá estar asociado a múltiples etiquetas y una misma etiqueta podrá estar asociada a múltiples videojuegos                                                       |
+| **RN12**  | **Información del catálogo**                 | La información descriptiva, las categorías y las etiquetas de los videojuegos deberán obtenerse de la fuente de datos utilizada para alimentar el catálogo                       |
+| **RN13**  | **Inmutabilidad de categorías y etiquetas**  | Los usuarios no podrán modificar manualmente las categorías ni las etiquetas asociadas a los videojuegos                                                                         |
+| **RN14**  | **Inmutabilidad de información descriptiva** | Los usuarios no podrán modificar la información descriptiva de los videojuegos                                                                                                   |
 ## Requerimientos No Funcionales
 - **Consultas a Steam:** El tiempo de sincronización con la API de Steam para obtener la biblioteca y horas de juego del usuario no debe superar los 5 segundos
 - **Autenticación externa:** El inicio de sesión debe realizarse exclusivamente a través del protocolo oficial de autenticación de Steam (OpenID), sin almacenar contraseñas de usuarios en la base de datos propia.
