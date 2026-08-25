@@ -30,7 +30,7 @@ Para simplificar el problema y acotar el alcance del proyecto, no se tendrán en
 - La gestión de información propia del funcionamiento interno de los videojuegos.
     
 - La administración de galerías de imágenes o capturas de pantalla de los videojuegos.
-	    
+	
 - Los sistemas de amigos, seguidores o contactos entre usuarios.
     
 - La mensajería privada y el chat entre usuarios.
@@ -51,7 +51,7 @@ Para simplificar el problema y acotar el alcance del proyecto, no se tendrán en
 
 Gestionar la consulta y publicación de reseñas de videojuegos pertenecientes a Steam, permitiendo a los usuarios autenticarse mediante su cuenta de Steam, consultar información sobre videojuegos, conocer las opiniones de otros usuarios y registrar sus propias valoraciones junto con información sobre su experiencia de juego.
 
-# Requerimientos Funcionales (Alcances)
+# Alcances
 
 - **Administrar Videojuegos**
 	
@@ -100,6 +100,8 @@ Gestionar la consulta y publicación de reseñas de videojuegos pertenecientes a
 - Sistemas de recomendación personalizados.
     
 - Gestión de comunidades o foros.
+    
+- Registro de componentes de hardware
 
 # Reglas de Negocio
 
@@ -123,3 +125,9 @@ Gestionar la consulta y publicación de reseñas de videojuegos pertenecientes a
 |16|Contenido Audiovisual|El sistema no almacena ni administra contenido audiovisual de los videojuegos. Cuando corresponda, el usuario podrá acceder a contenido externo mediante plataformas como YouTube.|
 |17|Información de Steam|La información obtenida desde Steam sobre la actividad del usuario no puede ser modificada directamente desde la aplicación.|
 |18|Contexto de la Reseña|La cantidad de horas de juego registrada en una reseña corresponde a las horas que poseía el usuario en el momento de su publicación y no debe actualizarse automáticamente con el paso del tiempo.|
+## Requerimientos No Funcionales
+- **Consultas a Steam:** El tiempo de sincronización con la API de Steam para obtener la biblioteca y horas de juego del usuario no debe superar los 5 segundos
+- **Autenticación externa:** El inicio de sesión debe realizarse exclusivamente a través del protocolo oficial de autenticación de Steam (OpenID), sin almacenar contraseñas de usuarios en la base de datos propia.
+- **Control de inactividad:** Las sesiones de usuario autenticadas deben expirar automáticamente tras 30 minutos de inactividad.
+- **Carga e Ingesta de Datos:** El diseño de la base de datos debe permitir actualizar o alimentar el catálogo desde el conjunto de datos de videojuegos de forma eficiente sin requerir la detención del servicio.
+- **Compatibilidad de navegadores:** La plataforma debe ser compatible con las dos últimas versiones estables de los principales navegadores (Chrome, Firefox, Edge, Safari).
