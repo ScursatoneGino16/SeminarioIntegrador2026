@@ -1,0 +1,20 @@
+@startuml CU
+left to right direction
+
+actor Usuario
+actor SteamAPI
+
+Usuario --> (Iniciar Sesion)
+Usuario --> (Registrar Reseña)
+Usuario --> (Modificar Reseña)
+Usuario --> (Consultar Reseña)
+Usuario --> (Eliminar Reseña)
+Usuario --> (Consultar Videojuego)
+Usuario --> (Consultar Categorias)
+Usuario --> (Consultar Etiquetas)
+Usuario --> (Organizar reseña)
+
+Sistema --> (Consultar informacion de videojuego mediante AppID)
+
+
+@enduml
