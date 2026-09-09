@@ -2,19 +2,21 @@
 left to right direction
 
 actor Usuario
-actor SteamAPI
+actor Steam << System >>
+  
+Usuario --> (Iniciar Sesión)
+(Iniciar Sesión) --> Steam
 
-Usuario --> (Iniciar Sesion)
+Usuario --> (Consultar Catálogo de Videojuegos)
+Usuario --> (Buscar y Filtrar Videojuegos)
+Usuario --> (Consultar Ficha de Videojuego)
+  
+
 Usuario --> (Registrar Reseña)
-Usuario --> (Modificar Reseña)
-Usuario --> (Consultar Reseña)
-Usuario --> (Eliminar Reseña)
-Usuario --> (Consultar Videojuego)
-Usuario --> (Consultar Categorias)
-Usuario --> (Consultar Etiquetas)
-Usuario --> (Organizar reseña)
-
-Sistema --> (Consultar informacion de videojuego mediante AppID)
-
-
+Usuario --> (Modificar Reseña Propia)
+Usuario --> (Eliminar Reseña Propia)
+Usuario --> (Consultar Reseñas)
+  
+(Registrar Reseña) ..> (Consultar Horas de Juego) : <<include>>
+(Consultar Horas de Juego) --> Steam
 @enduml
