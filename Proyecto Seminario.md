@@ -35,9 +35,12 @@ Para evitar el **Rate Limit** de la API de Steam (`appdetails`) y garantizar un 
 ```mermaid
 erDiagram
     USUARIOS ||--o{ REVIEWS : escribe
-    JUEGOS ||--o{ REVIEWS : recibe
-    JUEGOS }|--|{ TAGS : clasifica
-    JUEGOS }|--|{ CATEGORIAS : incluye
+    VIDEOJUEGOS ||--o{ REVIEWS : recibe
+    VIDEOJUEGOS ||--|{ VIDEOJUEGOCATEGORIA : clasifica
+    VIDEOJUEGOS ||--|{ VIDEOJUEGOETIQUETA : posee
+    CATEGORIAS ||--|{ VIDEOJUEGOCATEGORIA : agrupa
+    VIDEOJUEGOETIQUETA }|--|| ETIQUETAS : clasifica
+    
     
     USUARIOS {
         string steamId PK
@@ -55,14 +58,24 @@ erDiagram
         date fecha_creacion
     }
     
-    JUEGOS {
+    VIDEOJUEGOS {
         int appid PK
         string nombre
         text descripcion
         string imagen_url
     }
     
-    TAGS {
+    VIDEOJUEGOCATEGORIA {
+	    int appid PK_FK
+	    int categoria_id PK_FK
+	}
+	
+	VIDEOJUEGOETIQUETA {
+		int app_id PK_FK
+		int etiqueta_id PK_FK
+	}
+    
+    ETIQUETAS {
         int id PK
         string nombre
     }

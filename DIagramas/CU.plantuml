@@ -1,22 +1,20 @@
 @startuml CU
 left to right direction
-
 actor Usuario
 actor Steam << System >>
   
-Usuario --> (Iniciar Sesión)
-(Iniciar Sesión) --> Steam
+Usuario --> (1. Iniciar Sesión)
+(1. Iniciar Sesión) <-- Steam
 
-Usuario --> (Consultar Catálogo de Videojuegos)
-Usuario --> (Buscar y Filtrar Videojuegos)
-Usuario --> (Consultar Ficha de Videojuego)
-  
+Usuario --> (2. Consultar Catálogo de Videojuegos)
+Usuario --> (3. Buscar y Filtrar Videojuegos)
+Usuario --> (4. Consultar Ficha de Videojuego)  
 
-Usuario --> (Registrar Reseña)
-Usuario --> (Modificar Reseña Propia)
-Usuario --> (Eliminar Reseña Propia)
-Usuario --> (Consultar Reseñas)
+Usuario --> (5. Registrar Reseña)
+Usuario --> (6. Modificar Reseña Propia)
+Usuario --> (7. Eliminar Reseña Propia)
+Usuario --> (8. Consultar Reseñas)
   
-(Registrar Reseña) ..> (Consultar Horas de Juego) : <<include>>
-(Consultar Horas de Juego) --> Steam
+(5. Registrar Reseña) ..> (9. Consultar Horas de Juego) : <<include>>
+(9. Consultar Horas de Juego) <-- Steam
 @enduml
