@@ -18,7 +18,7 @@ component "ServicioSteamBibliotecaAPI"
 "PublicAPIGateway" --> "IntegracionBibliotecaAPI"
 "PublicAPIGateway" --> "IntegracionSteamOpenID"
 
-"WebUI" --> "PublicAPIGateway"
+"WebUI" --> "WebAPIGateway"
 "ServicioSteamOpenID" --> "PublicAPIGateway"
 "ServicioSteamBibliotecaAPI" --> "PublicAPIGateway"
 

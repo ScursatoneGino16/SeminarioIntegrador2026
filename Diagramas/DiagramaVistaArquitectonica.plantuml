@@ -1,0 +1,55 @@
+@startuml DiagramaDeComponentes
+component "ServicioUsuario"{
+    component "Usuario"
+    component "PersistenciaUsuario"
+    database "UsuarioDB"
+    "PersistenciaUsuario" --> "Usuario"
+    "PersistenciaUsuario" --> "UsuarioDB"
+}
+component "ServicioPublicacionYGestionReseñas" {
+    component "OrganizarReseña"
+    component "Reseña"
+    component "PersistenciaPGR"
+    database "PGRDB"
+    "PersistenciaPGR" --> "Reseña"
+    "PersistenciaPGR" --> PGRDB
+    "Reseña" --> "OrganizarReseña"
+}
+component "ServicioCatalogo" {
+    component "Videojuego"
+    component "Etiqueta"
+    component "Categoria"
+    component "PersistenciaCatalogo"
+    database "CatalogoDB"
+    "PersistenciaCatalogo" --> "CatalogoDB"
+    "PersistenciaCatalogo" --> "Videojuego"
+    "PersistenciaCatalogo" --> "Categoria"
+    "PersistenciaCatalogo" --> "Etiqueta"
+}
+component "APIGateway"{
+    component "WebAPIGateway"
+    component "PublicAPIGateway"
+}
+component "WebUI" {
+    component "UsuariosPresentacionWeb"
+    component "ReseñaPresentacionWeb"
+    component "CatalogoPresentacionWeb"
+}
+component "IntegracionSteamOpenID"
+component "IntegracionBibliotecaAPI"
+component "ServicioSteamOpenID"
+component "ServicioSteamBibliotecaAPI"
+
+"WebAPIGateway" -(0- "ServicioCatalogo"
+"WebAPIGateway" -(0- "ServicioUsuario"
+"WebAPIGateway" -(0- "ServicioPublicacionYGestionReseñas"
+
+"PublicAPIGateway" -(0- "IntegracionBibliotecaAPI"
+"PublicAPIGateway" -(0- "IntegracionSteamOpenID"
+
+"PublicAPIGateway" -(0- "WebUI"
+"ServicioSteamOpenID" -0)- "PublicAPIGateway"
+"ServicioSteamBibliotecaAPI" -0)- "PublicAPIGateway"
+
+
+@enduml
