@@ -1,0 +1,32 @@
+@startuml DiagramaDeComponentes
+left to right direction
+component "ServicioUsuario"
+component "ServicioPublicacionYGestionReseñas"
+component "ServicioCatalogo"
+component "IntegracionSteamOpenID"
+component "WebAPIGateway"
+component "PublicAPIGateway"
+component "WebUI"
+component "IntegracionBibliotecaAPI"
+component "ServicioSteamOpenID"
+component "ServicioSteamBibliotecaAPI"
+
+"WebAPIGateway" --> "ServicioCatalogo"
+"WebAPIGateway" --> "ServicioUsuario"
+"WebAPIGateway" --> "ServicioPublicacionYGestionReseñas"
+
+"PublicAPIGateway" --> "IntegracionBibliotecaAPI"
+"PublicAPIGateway" --> "IntegracionSteamOpenID"
+
+"WebUI" --> "PublicAPIGateway"
+"ServicioSteamOpenID" --> "PublicAPIGateway"
+"ServicioSteamBibliotecaAPI" --> "PublicAPIGateway"
+
+database "CatalogoDB"
+database "UsuarioDB"
+database "PGRDB"
+"ServicioCatalogo" -- "CatalogoDB"
+"ServicioUsuario" -- "UsuarioDB"
+"ServicioPublicacionYGestionReseñas" -- "PGRDB"
+
+@enduml

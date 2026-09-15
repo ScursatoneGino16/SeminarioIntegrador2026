@@ -30,62 +30,6 @@ Para evitar el **Rate Limit** de la API de Steam (`appdetails`) y garantizar un 
     
 2. **Fase de Enriquecimiento (Local):** Esos `AppID` se cruzan con la base de datos local, alimentada previamente por el dataset de Kaggle (`SteamGames_cleaned.csv`), resolviendo nombres, portadas y tags al instante.
 
-###  Estructura Relacional de la Base de Datos
-
-```mermaid
-erDiagram
-    USUARIOS ||--o{ REVIEWS : escribe
-    VIDEOJUEGOS ||--o{ REVIEWS : recibe
-    VIDEOJUEGOS ||--|{ VIDEOJUEGOCATEGORIA : clasifica
-    VIDEOJUEGOS ||--|{ VIDEOJUEGOETIQUETA : posee
-    CATEGORIAS ||--|{ VIDEOJUEGOCATEGORIA : agrupa
-    VIDEOJUEGOETIQUETA }|--|| ETIQUETAS : clasifica
-    
-    
-    USUARIOS {
-        string steamId PK
-        string username
-        string avatarUrl
-    }
-    
-    REVIEWS {
-        int id PK
-        string id_usuario FK
-        int id_juego FK
-        float puntaje
-        text comentario
-        float horas_al_comentar
-        date fecha_creacion
-    }
-    
-    VIDEOJUEGOS {
-        int appid PK
-        string nombre
-        text descripcion
-        string imagen_url
-    }
-    
-    VIDEOJUEGOCATEGORIA {
-	    int appid PK_FK
-	    int categoria_id PK_FK
-	}
-	
-	VIDEOJUEGOETIQUETA {
-		int app_id PK_FK
-		int etiqueta_id PK_FK
-	}
-    
-    ETIQUETAS {
-        int id PK
-        string nombre
-    }
-
-    CATEGORIAS {
-        int id PK
-        string nombre
-    }
-```
-
 ##  4. Mapa de Navegación y Permisos Frontend
 
 El alcance social se blinda para evitar complejidades técnicas como sistemas de mensajería, seguidores o notificaciones.

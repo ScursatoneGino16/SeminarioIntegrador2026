@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Introduccion.md",
+                "file": "Proyecto Seminario.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Introduccion"
+              "title": "Proyecto Seminario"
             }
           }
         ]
@@ -190,7 +190,8 @@
   },
   "active": "a8bcd283b3b73fc1",
   "lastOpenFiles": [
-    "Proyecto Seminario.md",
-    "Introduccion.md"
+    "DIagramas/DER.plantuml",
+    "Introduccion.md",
+    "Proyecto Seminario.md"
   ]
 }
