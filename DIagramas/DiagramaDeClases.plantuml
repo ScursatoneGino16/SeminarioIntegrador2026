@@ -1,0 +1,60 @@
+@startuml DiagramaDeClases
+class Videojuego {
+    - appID : int
+    - nombre : str
+    - sintesisDescriptiva: str
+    - imgPortada : url
+    + ordenarReseñas()
+
+}
+
+class Categoria {
+    - nombre : str
+}
+
+class Etiqueta {
+    - nombre : str
+}
+
+class Reseña {
+    - valoracion : int
+    - cantidadHorasUsuario : float
+    - fechaReseña : date
+    - descripcion : str
+    + editar()
+    + actualizarValoracion()
+    + obtenerResumenReacciones()
+}
+
+class ReaccionReseña {
+    - emogi : str
+}
+
+class ValoracionReseña {
+    - esMegusta : bool
+}
+
+class Usuario {
+    - steamID : str
+    - bibliotecaPublica : bool
+    + autenticarConSteam()
+    + consultarBiblioteca()
+    + obtenerHorasDeJuego()
+    + crearResena()
+    + modificarResena()
+    + eliminarResena()
+    + reaccionarResena()
+    + valorarResena()
+}
+
+Reseña ---> ValoracionReseña : 0.. * valoracion
+Reseña --> ReaccionReseña : 0..* reaccion
+
+Usuario -> Reseña : 0..* reseña
+Usuario -> ValoracionReseña : 0..1 valoracion
+Usuario -> ReaccionReseña : 0..1 reaccion
+
+Videojuego --> Reseña : 0..* reseña
+Videojuego --> Etiqueta : 1..* etiqueta
+Videojuego --> Categoria : 1..* categoria
+@enduml
