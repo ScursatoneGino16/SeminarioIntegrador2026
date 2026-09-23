@@ -1,0 +1,59 @@
+@startuml Casos de Uso Seminario
+
+left to right direction
+
+actor "Usuario" as Usuario
+actor "Administrador" as Admin
+actor "Steam" as Steam 
+
+usecase "1. Iniciar sesión" as CU1
+usecase "2. Consultar catálogo" as CU2
+usecase "3. Buscar Videojuego" as CU3
+usecase "4. Filtrar Videojuego" as CU4
+usecase "5. Consultar información de videojuego" as CU5
+usecase "6. Consultar biblioteca" as CU6
+usecase "7. Registrar reseña" as CU7
+usecase "8. Consultar reseña" as CU8
+usecase "9. Modificar reseña" as CU9
+usecase "10. Eliminar reseña" as CU10
+usecase "11. Registrar interacción con reseña" as CU11
+usecase "12. Consultar perfil de usuario" as CU12
+usecase "13. Registrar Videojuego" as CU13
+usecase "14. Modificar Videojuego" as CU14
+usecase "15. Eliminar Videojuego" as CU15
+usecase "16. Registrar categoría" as CU16
+usecase "17. Modificar categoría" as CU17
+usecase "18. Eliminar categoría" as CU18
+usecase "19. Registrar etiqueta" as CU19
+usecase "20. Modificar etiqueta" as CU20
+usecase "21. Eliminar etiqueta" as CU21
+usecase "22. Autenticar usuario" as CU22
+
+
+Usuario --> CU1
+Usuario --> CU2
+Usuario --> CU3
+Usuario --> CU4
+Usuario --> CU5
+Usuario --> CU6
+Usuario --> CU7
+Usuario --> CU8
+Usuario --> CU9
+Usuario --> CU10
+Usuario --> CU11
+Usuario --> CU12
+Admin --> CU13
+Admin --> CU14
+Admin --> CU15
+Admin --> CU16
+Admin --> CU17
+Admin --> CU18
+Admin --> CU19
+Admin --> CU20
+Admin --> CU21
+CU22<--Steam
+CU6 <-- Steam
+Admin --|> Usuario
+CU1 ..> CU22 : <<include>>
+CU7 ..> CU6 : <<include>>
+CU12 ..> CU8: <<include>>
