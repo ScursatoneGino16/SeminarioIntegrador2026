@@ -4,12 +4,12 @@ left to right direction
 
 actor "Usuario" as Usuario
 actor "Administrador" as Admin
-actor "Steam" as Steam 
+actor "SteamAPI" as Steam 
 
 usecase "1. Iniciar sesión" as CU1
 usecase "2. Consultar catálogo" as CU2
-usecase "3. Buscar Videojuego" as CU3
-usecase "4. Filtrar Videojuego" as CU4
+usecase "3. Buscar videojuego" as CU3
+usecase "4. Filtrar videojuego" as CU4
 usecase "5. Consultar información de videojuego" as CU5
 usecase "6. Consultar biblioteca" as CU6
 usecase "7. Registrar reseña" as CU7
@@ -18,9 +18,9 @@ usecase "9. Modificar reseña" as CU9
 usecase "10. Eliminar reseña" as CU10
 usecase "11. Registrar interacción con reseña" as CU11
 usecase "12. Consultar perfil de usuario" as CU12
-usecase "13. Registrar Videojuego" as CU13
-usecase "14. Modificar Videojuego" as CU14
-usecase "15. Eliminar Videojuego" as CU15
+usecase "13. Registrar videojuego" as CU13
+usecase "14. Modificar videojuego" as CU14
+usecase "15. Eliminar videojuego" as CU15
 usecase "16. Registrar categoría" as CU16
 usecase "17. Modificar categoría" as CU17
 usecase "18. Eliminar categoría" as CU18
