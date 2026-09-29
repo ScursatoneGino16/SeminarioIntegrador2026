@@ -1,73 +1,76 @@
 @startuml DiagramaDeComponentes
-component "ServicioUsuario"{
-    component "Perfil"
-    component "Sesion"
-    component "Usuario"
-    component "PersistenciaUsuario"
-    database "UsuarioDB"
 
-    "Usuario" ..> "Perfil"
-    "Sesion" ..> "Usuario"
-    "PersistenciaUsuario" ..> "UsuarioDB"
-    "PersistenciaUsuario" ..> "Perfil"
-    "PersistenciaUsuario" ..> "Usuario"
-}
-component "ServicioPublicacionYGestionReseñas" {
-    component "OrganizarReseña"
-    component "Reseña"
-    component "PersistenciaPGR"
-    database "PGRDB"
-    "PersistenciaPGR" ..> "Reseña"
-    "PersistenciaPGR" ..> PGRDB
-    "Reseña" ..> "OrganizarReseña"
-}
-component "ServicioCatalogo" {
-    component "Catalogo"
-    component "PersistenciaCatalogo"
-    database "CatalogoDB"
-    "PersistenciaCatalogo" ..> "CatalogoDB"
-    "PersistenciaCatalogo" ..> "Catalogo"
+component "CapaLogicaPersistente" {
+    component "GestionUsuario"{
+        component "Perfil"
+        component "Sesion"
+        component "Usuario"
+        component "PersistenciaUsuario"
+        database "UsuarioDB"
+
+        "Usuario" ..> "Perfil"
+        "Usuario" ..> "Sesion"
+        "PersistenciaUsuario" ..> "UsuarioDB"
+        "PersistenciaUsuario" ..> "Perfil"
+        "PersistenciaUsuario" ...> "Usuario"
+    }
+
+    component "GestionPublicacionYGestionReseñas" {
+        component "OrganizarReseña"
+        component "Reseña"
+        component "PersistenciaPGR"
+        database "PGRDB"
+        "PersistenciaPGR" ..> "Reseña"
+        "PersistenciaPGR" ..> PGRDB
+        "Reseña" ..> "OrganizarReseña"
+    }
+    component "GestionCatalogo" {
+        component "Catalogo"
+        component "PersistenciaCatalogo"
+        database "CatalogoDB"
+        "PersistenciaCatalogo" ..> "CatalogoDB"
+        "PersistenciaCatalogo" ..> "Catalogo"
+    }
+    component "GestionVideojuego" {
+        component "Videojuego"
+        component "Categoria"
+        component "Etiqueta"
+        component "PersistenciaVideojuego"
+        database "VideojuegoDB"
+        "Videojuego" ..> "Categoria"
+        "Videojuego" ..> "Etiqueta"
+        "PersistenciaVideojuego" ..> "Videojuego"
+        "PersistenciaVideojuego" ..> "Categoria"
+        "PersistenciaVideojuego" ..> "Etiqueta"
+        "PersistenciaVideojuego" ..> "VideojuegoDB"
+    }
 }
 
-component "ServicioVideojuego" {
-    component "Videojuego"
-    component "Categoria"
-    component "Etiqueta"
-    component "PersistenciaVideojuego"
-    database "VideojuegoDB"
-    "Videojuego" ..> "Categoria"
-    "Videojuego" ..> "Etiqueta"
-    "PersistenciaVideojuego" ..> "Videojuego"
-    "PersistenciaVideojuego" ..> "Categoria"
-    "PersistenciaVideojuego" ..> "Etiqueta"
-    "PersistenciaVideojuego" ..> "VideojuegoDB"
-}
-component "APIGateway"{
-    component "WebAPIGateway"
-    component "PublicAPIGateway"
-}
-component "WebUI" {
+component "CapaPresentacionWeb" {
     component "UsuariosPresentacionWeb"
     component "ReseñaPresentacionWeb"
     component "CatalogoPresentacionWeb"
     component "VideojuegoPresentacionWeb"
 }
-component "IntegracionSteamOpenID"
-component "IntegracionBibliotecaAPI"
 
+component "CapaLogicaNoPersistente" {
+    component "ProcesosImportadores"{
+        component "ImportadorBiblioteca"
+        component "ImportadorSteamOpenID"
+    }
+}
 
-"WebAPIGateway" -(0- "ServicioCatalogo" : ICatalogoRestAPI
-"WebAPIGateway" -(0- "ServicioUsuario" : IUsuarioRestAPI
-"WebAPIGateway" -(0- "ServicioPublicacionYGestionReseñas" : IPublicacionYGestionReseñasRestAPI
-"WebAPIGateway" -(0- "ServicioVideojuego" : IVideojuegoRestAPI
+"UsuariosPresentacionWeb" -(0- "GestionUsuario" : LogicaUsuarios
+"ReseñaPresentacionWeb" -(0- "GestionPublicacionYGestionReseñas" : LogicaReseñas
+"CatalogoPresentacionWeb" -(0- "GestionCatalogo" : LogicaCatalogo
+"VideojuegoPresentacionWeb" -(0- "GestionVideojuego" : LogicaVideojuego
 
-"PublicAPIGateway" -(0- "IntegracionBibliotecaAPI" : IIntegracionBibliotecaAPI
-"PublicAPIGateway" -(0- "IntegracionSteamOpenID" : IIntegracionSteamOpenIDAPI
+"GestionPublicacionYGestionReseñas" -(0- "GestionUsuario" : Autenticacion
+"GestionCatalogo" -(0- "GestionUsuario" : Autenticacion
+"GestionVideojuego" -(0- "GestionUsuario" : Autenticacion
 
-"PublicAPIGateway" -(0- "WebUI" : IWebUIRestAPI
-"ServicioSteamOpenID" -0)- "PublicAPIGateway" : ISteamOPenIDExterno
-"ServicioSteamBibliotecaAPI" -0)- "PublicAPIGateway" : ISteamBibliotecaAPIExterno
-
-"ServicioCatalogo" -(0- "ServicioVideojuego" : ICatalgoVideojuegoRestAPI
+"GestionCatalogo" -(0- "GestionVideojuego" : LogicaVideojuego
+"Usuario" -(0- "ImportadorBiblioteca" : InformacionVideojuegosDeUsuario
+"Usuario" -(0- "ImportadorSteamOpenID" : DatosCuentaSteamID
 
 @enduml
