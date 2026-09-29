@@ -16,7 +16,7 @@ usecase "7. Registrar reseña" as CU7
 usecase "8. Consultar reseña" as CU8
 usecase "9. Modificar reseña" as CU9
 usecase "10. Eliminar reseña" as CU10
-usecase "11. Registrar interacción con reseña" as CU11
+usecase "11. Registrar valoracion de reseña" as CU11
 usecase "12. Consultar perfil de usuario" as CU12
 usecase "13. Registrar videojuego" as CU13
 usecase "14. Modificar videojuego" as CU14

@@ -3,6 +3,7 @@ left to right direction
 component "ServicioUsuario"
 component "ServicioPublicacionYGestionReseñas"
 component "ServicioCatalogo"
+component "ServicioVideojuego"
 component "IntegracionSteamOpenID"
 component "WebAPIGateway"
 component "PublicAPIGateway"
@@ -14,6 +15,7 @@ component "ServicioSteamBibliotecaAPI"
 "WebAPIGateway" --> "ServicioCatalogo"
 "WebAPIGateway" --> "ServicioUsuario"
 "WebAPIGateway" --> "ServicioPublicacionYGestionReseñas"
+"WebAPIGateway" --> "ServicioVideojuego"
 
 "PublicAPIGateway" --> "IntegracionBibliotecaAPI"
 "PublicAPIGateway" --> "IntegracionSteamOpenID"
@@ -25,8 +27,11 @@ component "ServicioSteamBibliotecaAPI"
 database "CatalogoDB"
 database "UsuarioDB"
 database "PGRDB"
+database "VideojuegoDB"
+
 "ServicioCatalogo" -- "CatalogoDB"
 "ServicioUsuario" -- "UsuarioDB"
 "ServicioPublicacionYGestionReseñas" -- "PGRDB"
+"ServicioVideojuego" -- "VideojuegoDB"
 
 @enduml

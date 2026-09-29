@@ -1,0 +1,73 @@
+@startuml DiagramaDeComponentes
+component "ServicioUsuario"{
+    component "Perfil"
+    component "Sesion"
+    component "Usuario"
+    component "PersistenciaUsuario"
+    database "UsuarioDB"
+
+    "Usuario" ..> "Perfil"
+    "Sesion" ..> "Usuario"
+    "PersistenciaUsuario" ..> "UsuarioDB"
+    "PersistenciaUsuario" ..> "Perfil"
+    "PersistenciaUsuario" ..> "Usuario"
+}
+component "ServicioPublicacionYGestionReseñas" {
+    component "OrganizarReseña"
+    component "Reseña"
+    component "PersistenciaPGR"
+    database "PGRDB"
+    "PersistenciaPGR" ..> "Reseña"
+    "PersistenciaPGR" ..> PGRDB
+    "Reseña" ..> "OrganizarReseña"
+}
+component "ServicioCatalogo" {
+    component "Catalogo"
+    component "PersistenciaCatalogo"
+    database "CatalogoDB"
+    "PersistenciaCatalogo" ..> "CatalogoDB"
+    "PersistenciaCatalogo" ..> "Catalogo"
+}
+
+component "ServicioVideojuego" {
+    component "Videojuego"
+    component "Categoria"
+    component "Etiqueta"
+    component "PersistenciaVideojuego"
+    database "VideojuegoDB"
+    "Videojuego" ..> "Categoria"
+    "Videojuego" ..> "Etiqueta"
+    "PersistenciaVideojuego" ..> "Videojuego"
+    "PersistenciaVideojuego" ..> "Categoria"
+    "PersistenciaVideojuego" ..> "Etiqueta"
+    "PersistenciaVideojuego" ..> "VideojuegoDB"
+}
+component "APIGateway"{
+    component "WebAPIGateway"
+    component "PublicAPIGateway"
+}
+component "WebUI" {
+    component "UsuariosPresentacionWeb"
+    component "ReseñaPresentacionWeb"
+    component "CatalogoPresentacionWeb"
+    component "VideojuegoPresentacionWeb"
+}
+component "IntegracionSteamOpenID"
+component "IntegracionBibliotecaAPI"
+
+
+"WebAPIGateway" -(0- "ServicioCatalogo" : ICatalogoRestAPI
+"WebAPIGateway" -(0- "ServicioUsuario" : IUsuarioRestAPI
+"WebAPIGateway" -(0- "ServicioPublicacionYGestionReseñas" : IPublicacionYGestionReseñasRestAPI
+"WebAPIGateway" -(0- "ServicioVideojuego" : IVideojuegoRestAPI
+
+"PublicAPIGateway" -(0- "IntegracionBibliotecaAPI" : IIntegracionBibliotecaAPI
+"PublicAPIGateway" -(0- "IntegracionSteamOpenID" : IIntegracionSteamOpenIDAPI
+
+"PublicAPIGateway" -(0- "WebUI" : IWebUIRestAPI
+"ServicioSteamOpenID" -0)- "PublicAPIGateway" : ISteamOPenIDExterno
+"ServicioSteamBibliotecaAPI" -0)- "PublicAPIGateway" : ISteamBibliotecaAPIExterno
+
+"ServicioCatalogo" -(0- "ServicioVideojuego" : ICatalgoVideojuegoRestAPI
+
+@enduml
