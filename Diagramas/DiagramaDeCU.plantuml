@@ -51,9 +51,11 @@ Admin --> CU18
 Admin --> CU19
 Admin --> CU20
 Admin --> CU21
-CU22<--Steam
-CU6 <-- Steam
+CU22--> Steam
+CU6 --> Steam
 Admin --|> Usuario
 CU1 ..> CU22 : <<include>>
 CU7 ..> CU6 : <<include>>
 CU12 ..> CU8: <<include>>
+CU8 <.. CU11: <<extend>>
+@enduml
